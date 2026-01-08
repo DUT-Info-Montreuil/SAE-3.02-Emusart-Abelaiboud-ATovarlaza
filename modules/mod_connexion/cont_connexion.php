@@ -18,20 +18,34 @@ class ContConnexion
         $this->password = isset($_POST['password'])?$_POST['password']:'';
     }
 
+//    public function nouvelleSession()
+//    {
+//        $connexionUser = $this->modele->seConnecter($this->user);
+//        if ($connexionUser!= false) {
+//            if (password_verify($connexionUser['password'],$this->password) && $this->user == $connexionUser['login']) {
+//                $_SESSION['user'] = $connexionUser['login'];
+//                $this->vue->connexionReussie();
+//                $this->vue->afficherDeconnexion();
+//            } else {
+//                $this->vue->erreurConnexion();
+//            }
+//        }
+//    }
+
     public function nouvelleSession()
     {
         $connexionUser = $this->modele->seConnecter($this->user);
-        if ($connexionUser!= false) {
-            if (password_verify($connexionUser['password'],$this->password) && $this->user == $connexionUser['login']) {
+        if ($connexionUser != false) {
+            if (password_verify($this->password, $connexionUser['password'])) {
                 $_SESSION['user'] = $connexionUser['login'];
                 $this->vue->connexionReussie();
-                $this->vue->afficherDeconnexion();
             } else {
                 $this->vue->erreurConnexion();
             }
+        } else {
+            $this->vue->erreurConnexion();
         }
     }
-
     public function deconnexion(){
         unset($_SESSION['user']);
         $this->vue->deconnexionReussie();
