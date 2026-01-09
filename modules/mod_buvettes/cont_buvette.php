@@ -28,11 +28,15 @@ class ContBuvette{
             echo "Aucune buvette specifiee.";
             return;
         }
-
+        else{
         $id = $_GET['id'];
         $buvette = $this->modele->getBuvette($id);
         $produitsDeBuvette = $this->modele->getProduitsDeBuvette($id);
         $this->vue->affiche_details($buvette,$produitsDeBuvette);
+    }
+    }
+    public function getAction(){
+        return $this->action;
     }
 
 }

@@ -16,7 +16,7 @@ class VueBuvette{
 
         echo "<br> Liste des Buvettes : <br>";
         foreach($tab as $elem){
-            echo "<a href='index.php?module=mod_buvettes&action=details&id=".$elem['idBuvette']."'>".$elem['nomBuvette']." , ".$elem['adresse']."</a><br>";
+            echo "<a href='index.php?module=buvettes&action=details&id=".$elem['idBuvette']."'>".$elem['nomBuvette']." , ".$elem['adresse']."</a><br>";
         }
 
     }
@@ -31,10 +31,10 @@ class VueBuvette{
         }
     }
 
-    public function menu(){
-        $href = "index.php?module=mod_joueurs&action=";
-        echo "<a href=".$href."liste>Les Buvettes</a><br>";
-    }
+//    public function menu(){
+//        $href = "index.php?module=mod_joueurs&action=";
+//        echo "<a href=".$href."liste>Les Buvettes</a><br>";
+//    }
 }
 
 

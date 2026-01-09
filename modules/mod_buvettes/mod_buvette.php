@@ -9,19 +9,15 @@ class ModBuvette{
 
     public function __construct()
     {
-        $this -> exec();
+        $this->controleur = new ContBuvette();
+
     }
 
     public function exec(){
 
-        $this->controleur = new ContBuvette();
-        $this->controleur->vue->menu();
+//        $this->controleur->vue->menu();
 
-        switch ($this -> controleur -> action){
-
-            case 'bienvenue':
-                echo "Test";
-                break;
+        switch ($this -> controleur ->getAction()){
             case 'liste':
                 $this->controleur->liste();
                 break;

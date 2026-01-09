@@ -29,8 +29,8 @@ include_once "modules/mod_connexion/mod_connexion.php";
 include_once "Controleur.php";
 Connexion::initConnexion();
 if(isset($_GET['module'])) {
-    $module = $_GET['module'];
-    switch ($module) {
+    $nomDuModule = $_GET['module'];
+    switch ($nomDuModule) {
         case 'connexion':
             $module = new ModConnexion();
             break;
@@ -42,6 +42,10 @@ if(isset($_GET['module'])) {
             include_once "modules/mod_panier/mod_panier.php";
             $module = new ModPanier();
             break;
+        case 'buvettes':
+            include_once "modules/mod_buvettes/mod_buvette.php";
+            $module= new ModBuvette();
+            break;
     }
     $module->exec();
 }
@@ -52,6 +56,7 @@ if (isset($_SESSION['user'])) {
     echo "<a href=" . "index.php?module=connexion&action=deconnexion>Deconnexion</a><br>";
     echo "<a href=" . "index.php?module=profil&action=accueil>Profil</a><br>";
     echo "<a href=" . "index.php?module=panier&action=panier>Panier</a><br>";
+    echo "<a href=" . "index.php?module=buvettes&action=liste>Buvettes</a><br>";
 } else {
     echo "<a href=" . "index.php?module=connexion>Connexion</a><br>";
 
