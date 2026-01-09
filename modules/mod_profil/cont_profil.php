@@ -14,13 +14,14 @@ class ContProfil
         $this->action = isset($_GET['action']) ? $_GET['action'] : "accueil";
     }
 
-    public function getNomEtPrenom(){
-        return $this->modele->getNomEtGetPrenom($_SESSION['user']);
-    }
     public function pageProfil(){
-        $nom=$this->modele->getNom($_SESSION['user']);
-        $prenom=$this->modele->getPrenom($_SESSION['user']);
+        $login=$_SESSION['user'];
+        $nom=$this->modele->getNom($login);
+        $prenom=$this->modele->getPrenom($login);
+        $photo=$this->modele->getPhoto($login);
+        $this->vue->afficherPhoto($photo);
         $this->vue->afficherNomEtPrenom($nom,$prenom);
+
     }
     public function getAction(){
         return $this->action;

@@ -20,4 +20,12 @@ class ModeleProfil extends Connexion
         $prenom = $sth->fetch();
         return $prenom['prenom'];
     }
+    public function getPhoto($login){
+        $sth = self::$bdd->prepare("SELECT photo FROM utilisateur where login= :login;");
+        $sth->bindParam(':login',$login);
+        $sth->execute();
+        $photo = $sth->fetch();
+        return $photo['photo'];
+    }
+
 }

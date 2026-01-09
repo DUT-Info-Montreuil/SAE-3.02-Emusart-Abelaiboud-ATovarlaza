@@ -5,8 +5,11 @@ class VueProfil
     {
     }
     public function afficherNomEtPrenom($nom,$prenom){
-        echo"".$nom."      ".$prenom."<br>";
+        echo"<br>".$nom."      ".$prenom."<br>";
     }
 
+    public function afficherPhoto($photo){
+        echo "<br><img src='$photo' alt='Photo de profil'><br>";
+    }
 
 }
