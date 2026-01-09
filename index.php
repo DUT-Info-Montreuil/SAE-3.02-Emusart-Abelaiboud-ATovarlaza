@@ -34,6 +34,10 @@ if(isset($_GET['module'])) {
         case 'connexion':
             $module = new ModConnexion();
             break;
+        case 'profil':
+            include_once "modules/mod_profil/mod_profil.php";
+            $module = new ModProfil();
+            break;
     }
     $module->exec();
 }
@@ -42,6 +46,7 @@ else{
 }
 if (isset($_SESSION['user'])) {
     echo "<a href=" . "index.php?module=connexion&action=deconnexion>Deconnexion</a><br>";
+    echo "<a href=" . "index.php?module=profil&action=accueil>Profil</a><br>";
 } else {
     echo "<a href=" . "index.php?module=connexion>Connexion</a><br>";
 

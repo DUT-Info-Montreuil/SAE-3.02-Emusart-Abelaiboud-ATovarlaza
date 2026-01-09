@@ -8,10 +8,14 @@ class VueConnexion{
     }
     public function afficher_form_inscription(){
         ?>
-        <br><form action='index.php?module=connexion&action=inscription' method='POST'>
+        <br><form action='index.php?module=connexion&action=inscription' enctype="multipart/form-data" method='POST'>
 
-            Nom: <input type = 'text' name ='login' placeholder='identifiant'><br>
-            Mot de Passe: <input type="password" name ="password" placeholder='mot de passe'><br>
+            Pseudo: <input type = 'text' name ='login' placeholder='Identifiant'><br>
+            Nom: <input type = 'text' name ='nom' placeholder='Nom'><br>
+            Prénom: <input type = 'text' name ='prenom' placeholder='Prénom'><br>
+            Mot de Passe: <input type="password" name ="password" placeholder='Mot de passe'><br>
+            Photo de Profil (optionnel)<input type ='file' name ='photo' placeholder="photo de profil"><br>
+
             <input type="submit" value="envoyer">
         </form>
 
