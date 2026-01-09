@@ -17,7 +17,7 @@ class ContPanier
 
     public function panier()
     {
-        $panier = $this->modele->getPanier($_GET['id']);
+        $panier = $this->modele->getPanier(2);
         $this->vue->afficherPanier($panier);
     }
 }

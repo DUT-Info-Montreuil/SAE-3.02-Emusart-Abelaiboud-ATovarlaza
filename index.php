@@ -38,6 +38,10 @@ if(isset($_GET['module'])) {
             include_once "modules/mod_profil/mod_profil.php";
             $module = new ModProfil();
             break;
+        case 'panier':
+            include_once "modules/mod_panier/mod_panier.php";
+            $module = new ModPanier();
+            break;
     }
     $module->exec();
 }
@@ -47,6 +51,7 @@ else{
 if (isset($_SESSION['user'])) {
     echo "<a href=" . "index.php?module=connexion&action=deconnexion>Deconnexion</a><br>";
     echo "<a href=" . "index.php?module=profil&action=accueil>Profil</a><br>";
+    echo "<a href=" . "index.php?module=panier&action=panier>Panier</a><br>";
 } else {
     echo "<a href=" . "index.php?module=connexion>Connexion</a><br>";
 

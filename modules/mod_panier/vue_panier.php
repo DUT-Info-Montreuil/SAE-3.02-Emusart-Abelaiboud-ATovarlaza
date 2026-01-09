@@ -8,7 +8,7 @@ class VuePanier
 
     public function afficherPanier($panier)
     {
-        echo "nom : " . $panier['nom'] . " | qte : " . $panier['quantite'] . " |  description : " . $panier['description'];
+        echo "nom : " . $panier['nom'] . " | qte : " . $panier['quantite'] . " |  description : " . $panier['description'] . "<br>";
     }
 }
 ?>

@@ -8,7 +8,6 @@ class ModPanier
     public function __construct()
     {
         $this->controleur = new ContPanier();
-        $this->exec();
     }
 
     public function exec()
