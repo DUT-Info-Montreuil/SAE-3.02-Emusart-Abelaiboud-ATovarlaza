@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 include_once "modules/mod_buvettes/cont_buvette.php";
 
@@ -15,9 +15,10 @@ class ModBuvette{
     public function exec(){
 
         $this->controleur = new ContBuvette();
-        
+        $this->controleur->vue->menu();
+
         switch ($this -> controleur -> action){
-            
+
             case 'bienvenue':
                 echo "Test";
                 break;
@@ -26,10 +27,8 @@ class ModBuvette{
                 break;
             case 'details':
                 $this->controleur->details();
-                break;        
+                break;
         }
     }
 }
 
-
-?>

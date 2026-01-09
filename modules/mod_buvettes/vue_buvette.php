@@ -1,10 +1,14 @@
-<?php 
+<?php
+
+include_once "modele_buvette.php";
 
 class VueBuvette{
 
+    private $modele;
+
     public function  __construct()
     {
-        
+        $this->modele = new ModeleBuvette();
     }
 
 
@@ -12,7 +16,7 @@ class VueBuvette{
 
         echo "<br> Liste des Buvettes : <br>";
         foreach($tab as $elem){
-            echo "<a href='index.php?module=mod_buvettes&action=details&id=".$elem['nomBuvette']."'>".$elem['nomBuvette']." , ".$elem['adresse']."</a><br>";
+            echo "<a href='index.php?module=mod_buvettes&action=details&id=".$elem['idBuvette']."'>".$elem['nomBuvette']." , ".$elem['adresse']."</a><br>";
         }
 
     }
@@ -20,10 +24,16 @@ class VueBuvette{
 
     public function affiche_details($buvette,$produits = array()){
 
-        echo "Buvette : ".$buvette['nom']."<br>";
+        echo "Buvette : ".$buvette['nomBuvette']."<br>";
         foreach($produits as $elem){
-            echo $elem['nom']." : ".$elem['description']."<br>"; 
+            $produit = $this->modele->getProduit($elem['idProduit']);
+            echo $produit['nom']. " - " .$elem['prix']. "€ " ."<br>";
         }
+    }
+
+    public function menu(){
+        $href = "index.php?module=mod_joueurs&action=";
+        echo "<a href=".$href."liste>Les Buvettes</a><br>";
     }
 }
 

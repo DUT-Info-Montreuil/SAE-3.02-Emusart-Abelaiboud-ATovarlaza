@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 include_once "modules/mod_buvettes/modele_buvette.php";
 include_once "modules/mod_buvettes/vue_buvette.php";
@@ -13,8 +13,8 @@ class ContBuvette{
     {
         $this -> modele = new ModeleBuvette();
         $this -> vue = new VueBuvette();
-        $this -> action = isset($_GET['action']) ? $_GET['action'] : "accueil";
-    
+        $this -> action = isset($_GET['action']) ? $_GET['action'] : "bienvenue";
+
     }
 
     public function liste(){
@@ -23,7 +23,7 @@ class ContBuvette{
     }
 
     public function details(){
-    
+
         if(!isset($_GET['id'])){
             echo "Aucune buvette specifiee.";
             return;
@@ -31,8 +31,8 @@ class ContBuvette{
 
         $id = $_GET['id'];
         $buvette = $this->modele->getBuvette($id);
-        $produits = $this->modele->getProduits($id);
-        $this->vue->affiche_details($buvette,$produits);
+        $produitsDeBuvette = $this->modele->getProduitsDeBuvette($id);
+        $this->vue->affiche_details($buvette,$produitsDeBuvette);
     }
 
 }
