@@ -28,7 +28,7 @@ class VueConnexion{
         ?>
         <br><form action='index.php?module=connexion&action=connecte' method='POST'>
 
-            Nom: <input type = 'text' name ='login' placeholder='identifiant'><br>
+            Pseudo: <input type = 'text' name ='login' placeholder='identifiant'><br>
             Mot de Passe: <input type="password" name ="password" placeholder='mot de passe'><br>
             <input type="submit" value="envoyer">
         </form>

@@ -46,7 +46,7 @@ class ModeleConnexion extends Connexion
 
 
                         $sth = self::$bdd->prepare('update utilisateur SET photo=:photo WHERE login=:login;');
-                        $lienphoto = "ressources/photo_de_profil" . $photo['name'];
+                        $lienphoto = "ressources/photo_de_profil/" . $photo['name'];
                         $sth->bindParam(':photo', $lienphoto);
                         $sth->bindParam(':login', $_POST['login']);
                         $sth->execute();
@@ -66,18 +66,6 @@ class ModeleConnexion extends Connexion
             return $verif !== false;
         }
 
-//    public function seConnecter($login, $password){
-//
-//            $sth = self::$bdd->prepare('SELECT password FROM utilisateur WHERE login = :login');
-//        $sth->bindParam(':login', $login);
-//        $sth->execute();
-//        $res=$sth->fetch();
-//
-//        if ($res && password_verify($password, $res['password']))
-//            return true;
-//        else
-//            return false;
-//    }
     public function loginDejaUtilisé($login){
         $sth = self::$bdd->prepare("SELECT login FROM utilisateur where login= :login;");
         $sth->bindParam(':login',$login);
