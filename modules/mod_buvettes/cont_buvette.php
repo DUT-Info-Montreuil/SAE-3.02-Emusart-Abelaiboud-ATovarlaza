@@ -1,0 +1,44 @@
+<?php
+
+include_once "modules/mod_buvettes/modele_buvette.php";
+include_once "modules/mod_buvettes/vue_buvette.php";
+
+class ContBuvette{
+
+    private $modele;
+    public $vue;
+    public $action;
+
+    public function __construct()
+    {
+        $this -> modele = new ModeleBuvette();
+        $this -> vue = new VueBuvette();
+        $this -> action = isset($_GET['action']) ? $_GET['action'] : "bienvenue";
+
+    }
+
+    public function liste(){
+        $tab = $this->modele->getListe();
+        $this->vue->affiche_liste($tab);
+    }
+
+    public function details(){
+
+        if(!isset($_GET['id'])){
+            echo "Aucune buvette specifiee.";
+            return;
+        }
+        else{
+        $id = $_GET['id'];
+        $buvette = $this->modele->getBuvette($id);
+        $produitsDeBuvette = $this->modele->getProduitsDeBuvette($id);
+        $this->vue->affiche_details($buvette,$produitsDeBuvette);
+    }
+    }
+    public function getAction(){
+        return $this->action;
+    }
+
+}
+
+?>
